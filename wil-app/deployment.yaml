@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wil-app
+  labels:
+    app: wil-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wil-app
+  template:
+    metadata:
+      labels:
+        app: wil-app
+    spec:
+      containers:
+      - name: wil-app
+        image: nginx:alpine
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
